@@ -1,8 +1,9 @@
 /*
   Actix Web Server.
-  Init and visit local endpoints:
+  Call function init to spin up.
+  Expose and visit local endpoints:
   http://localhost:8080/
-  http://localhost:8080/JS
+  http://localhost:8080/Joe
 */
 
 use actix_web::{web, App, HttpRequest, HttpServer, Responder};

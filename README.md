@@ -4,6 +4,19 @@ AI Agent bot that generates text messages and posts them on social media as conf
 
 Written with Rust.
 
+This project is under development. Features may change.
+
+---
+
+## Functionality
+
+The bot can:
+
+- Summarize text and answer your questions
+- Read text files (knowledge) from specified file path
+- Post AI generated content to X (Twitter)
+- Post scheduled X (Twitter) posts
+
 ---
 
 ## Commands
@@ -46,7 +59,21 @@ cargo run
 
 ## Environment Variables
 
-- OPENAI_API_KEY
+- OPENAI_API_KEY (set it as local system environment variable)
+
+Configure X access in [bot](./twitter_bot/src/bot.rs) file directly:
+
+```
+API_KEY: &str = "...";
+
+API_KEY_SECRET: &str = "...";
+
+ACCESS_TOKEN: &str = "...";
+
+ACCESS_TOKEN_SECRET: &str = "...";
+```
+
+Run different examples in [main](./twitter_bot/src/main.rs) (comment and uncomment).
 
 ---
 
