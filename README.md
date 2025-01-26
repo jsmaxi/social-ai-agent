@@ -2,8 +2,6 @@
 
 AI Agent bot that generates text messages and posts them on social media as configured.
 
-Written with Rust.
-
 This project is under development. Features may change.
 
 ---
@@ -16,18 +14,23 @@ The bot can:
 - Read text files (knowledge) from specified file path
 - Post AI generated content to X (Twitter)
 - Post scheduled X (Twitter) posts
+- Expose web service endpoints for other systems
+
+---
+
+## Technologies
+
+- Rust
+
+- X (Twitter) API
+
+- LangChain LLM
+
+- OpenAI API
 
 ---
 
 ## Commands
-
-If you don't have Cargo and Rust installed on your machine: https://doc.rust-lang.org/cargo/getting-started/installation.html
-
-Created new project:
-
-```console
-cargo new twitter_bot
-```
 
 Run:
 
@@ -35,6 +38,14 @@ Run:
 cd twitter_bot
 cargo build
 cargo run
+```
+
+If you don't have Cargo and Rust installed on your machine: https://doc.rust-lang.org/cargo/getting-started/installation.html
+
+Created new project:
+
+```console
+cargo new twitter_bot
 ```
 
 ---
