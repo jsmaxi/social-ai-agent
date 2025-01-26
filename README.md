@@ -40,6 +40,14 @@ cargo run
 
 - llm-chain-openai https://crates.io/crates/llm-chain-openai
 
+- actix-web https://crates.io/crates/actix-web
+
+---
+
+## Environment Variables
+
+- OPENAI_API_KEY
+
 ---
 
 ## X Access

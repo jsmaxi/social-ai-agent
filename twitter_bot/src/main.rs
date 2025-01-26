@@ -2,6 +2,8 @@ use chrono::Local;
 use llm_chain::{executor, parameters, prompt, step::Step};
 use twitter_v2::{authorization::Oauth1aToken, TwitterApi};
 
+mod server;
+
 fn content() -> String {
     let tweet_content: String = format!(
         "Hello! This is my daily post at {}. Expect more 🫡",
@@ -63,5 +65,6 @@ async fn greet(name: String) -> Result<(), Box<dyn std::error::Error>> {
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     //tweet().await
-    greet(String::from("JS")).await
+    //greet(String::from("JS")).await
+    server::init().await
 }
