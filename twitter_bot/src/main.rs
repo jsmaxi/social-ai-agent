@@ -1,4 +1,5 @@
 use chrono::Local;
+use llm_chain::{executor, parameters, prompt, step::Step};
 use twitter_v2::{authorization::Oauth1aToken, TwitterApi};
 
 fn content() -> String {
@@ -45,7 +46,22 @@ async fn tweet() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
+async fn greet(name: String) -> Result<(), Box<dyn std::error::Error>> {
+    let exec = executor!()?; // New ChatGPT executor
+    let step = Step::for_prompt_template(prompt!(
+        "You are a bot for making personalized greetings",
+        "Make a personalized greeting tweet for {{text}}. Dont use any hashtags and don't use quotation marks."
+    ));
+
+    let res = step.run(&parameters!(name), &exec).await?;
+    let content = res.to_immediate().await?.as_content();
+    println!("{}", content);
+
+    Ok(())
+}
+
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    tweet().await
+    //tweet().await
+    greet(String::from("JS")).await
 }

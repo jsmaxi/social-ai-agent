@@ -8,3 +8,5 @@ twitter-v2 = "0.1.8"
 tokio = { version = "1.43.0", features = ["full"] }
 cron = "0.15.0"
 chrono = "0.4.39"
+llm-chain = "0.13.0"
+llm-chain-openai = "0.13.0"
