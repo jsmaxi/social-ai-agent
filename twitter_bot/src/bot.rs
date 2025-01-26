@@ -2,9 +2,9 @@ use chrono::{DateTime, Local, Utc};
 use cron::Schedule;
 use llm_chain::prompt;
 use llm_chain::{chains::sequential::Chain, executor, parameters, prompt::Data, step::Step};
-use std::fs;
 use std::str::FromStr;
 use std::thread;
+use std::{fs, io};
 use twitter_v2::{authorization::Oauth1aToken, TwitterApi};
 
 // X (Twitter) access configuration
@@ -169,6 +169,54 @@ pub async fn summarize_from_file(file_path: String) -> Result<(), Box<dyn std::e
     let res = step.run(&parameters!(knowledge), &exec).await?;
     let content = res.to_immediate().await?.as_content();
     println!("{}", content);
+
+    Ok(())
+}
+
+pub async fn answer_from_file(file_path: String) -> Result<(), Box<dyn std::error::Error>> {
+    let knowledge: String = fs::read_to_string(file_path)?;
+
+    loop {
+        println!("Enter your question (x to exit):");
+
+        let mut input: String = String::new();
+
+        io::stdin()
+            .read_line(&mut input)
+            .expect("Failed to read line");
+
+        if input.is_empty() {
+            println!("Question cannot be empty. Please try again.");
+            continue;
+        }
+
+        let trimmed_input: &str = input.trim();
+
+        if trimmed_input.eq_ignore_ascii_case("x") {
+            println!("Exiting.");
+            break;
+        }
+
+        println!("Thinking...");
+
+        let exec = executor!()?; // New ChatGPT executor
+        let step = Step::for_prompt_template(prompt!(
+            "Context:\n{{ctx}}\n\nAnswer this question in simple text:{{q}}."
+        ));
+
+        let res = step
+            .run(
+                &parameters!(
+                    "ctx" => knowledge.clone(),
+                    "q" => trimmed_input.to_string(),
+                ),
+                &exec,
+            )
+            .await?;
+
+        let content = res.to_immediate().await?.as_content();
+        println!("{}", content);
+    }
 
     Ok(())
 }
