@@ -15,10 +15,10 @@ fn content() -> String {
 fn oauth() -> Oauth1aToken {
     /* Bot uses OAuth 1.0 Visit: https://developer.x.com */
 
-    let api_key: &str = "l0QchTLJdLtfXB728nlhIqsnI";
-    let api_key_secret: &str = "ubx3q6st1azIxcRqTNkm3Z8XUtqL85TUbzuD5QhUQhjm2RUdLa";
-    let access_token: &str = "1583553210521980928-zTFPjxfrCcnCp6NGwnTGvurZ53wyeE";
-    let access_token_secret: &str = "PAAr3xVr6ISKezyEX81QWEA72FykdVzz3evLUjPXfUFYc";
+    let api_key: &str = "...";
+    let api_key_secret: &str = "...";
+    let access_token: &str = "...";
+    let access_token_secret: &str = "...";
 
     let token: Oauth1aToken = Oauth1aToken::new(
         &api_key,
