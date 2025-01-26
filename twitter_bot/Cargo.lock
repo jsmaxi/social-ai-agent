@@ -2802,6 +2802,8 @@ dependencies = [
  "cron",
  "llm-chain",
  "llm-chain-openai",
+ "serde",
+ "serde_json",
  "tokio",
  "twitter-v2",
 ]

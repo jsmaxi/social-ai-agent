@@ -1,0 +1,14 @@
+{
+    "win_condition": "Reduce opponent's health to 0.",
+    "mana_rules": "Players gain 1 mana per turn, up to a maximum of 10.",
+    "card_types": [
+      {
+        "name": "Spell",
+        "description": "Can be played instantly. Removed after use."
+      },
+      {
+        "name": "Creature",
+        "description": "Placed on the board. Can attack or defend."
+      }
+    ]
+  }

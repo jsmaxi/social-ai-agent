@@ -15,6 +15,7 @@ The bot can:
 - Post AI generated content to X (Twitter)
 - Post scheduled X (Twitter) posts
 - Expose web service endpoints for other systems
+- Play a game by rules as AI opponent
 
 ---
 
@@ -65,6 +66,10 @@ cargo new twitter_bot
 - llm-chain-openai https://crates.io/crates/llm-chain-openai
 
 - actix-web https://crates.io/crates/actix-web
+
+- serde https://crates.io/crates/serde
+
+- serde_json https://crates.io/crates/serde_json
 
 ---
 
